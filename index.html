@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e0f2fe">
+  <meta name="description" content="ト音記号の調号と調名を、長調・短調それぞれで練習できるクイズ。">
+  <title>調号の練習 | 音楽対策</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%235582e2'/%3E%3Cpath d='M12 42h40M12 32h40M12 22h40' stroke='white' stroke-width='2'/%3E%3Cpath d='M27 13v38m10-38v38M21 28l22-5m-22 17 22-5' stroke='white' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <main class="main">
+      <h1 class="title">音楽対策（調号）</h1>
+
+      <section class="workspace" aria-label="調号クイズ">
+        <div class="config-bar">
+          <h2>出題設定</h2>
+          <div class="control-group"><span class="control-label">練習方法</span><div class="segmented" role="group" aria-label="練習方法"><button type="button" class="segment active" data-mode="read" aria-pressed="true">調号 → 調名</button><button type="button" class="segment" data-mode="write" aria-pressed="false">調名 → 調号</button></div></div>
+          <div class="control-group"><span class="control-label">出題する調</span><div class="segmented" role="group" aria-label="出題する調"><button type="button" class="segment active" data-kind="major" aria-pressed="true">長調</button><button type="button" class="segment" data-kind="minor" aria-pressed="false">短調</button><button type="button" class="segment" data-kind="mix" aria-pressed="false">両方</button></div></div>
+        </div>
+
+        <div class="practice-layout">
+          <div class="question-panel">
+            <div class="panel-top"><span class="section-heading">問題</span><span class="panel-kicker" id="question-number">QUESTION 01</span><span class="small-rule"></span><span class="panel-kicker" id="mode-caption">調号から調名へ</span></div>
+            <h2 id="prompt">この調号は何長調？</h2>
+            <div class="score-card" aria-label="学習状況"><span>正解 <strong id="correct-count">0</strong></span><span class="score-divider"></span><span>連続正解 <strong id="streak-count">0</strong></span></div>
+            <div class="staff-frame"><div id="staff" class="staff" aria-label="ト音記号の五線譜"></div><span class="staff-corner">𝄞 &nbsp; TREBLE CLEF</span></div>
+            <p class="staff-hint" id="staff-hint">譜面の調号を見て答えを選んでください。</p>
+          </div>
+
+          <div class="answer-panel">
+            <div class="answer-top"><span class="section-heading">解答</span><span class="answer-step" id="answer-step">選択式</span></div>
+            <div id="read-controls"><h3>調の名前を選ぶ</h3><div id="choices" class="choices"></div></div>
+            <div id="write-controls" hidden><h3>調号を組み立てる</h3><p class="choice-description">記号の種類と数を選んでください。</p><div class="signature-builder"><div class="builder-label">記号</div><div class="builder-row" id="sign-choices"></div><div class="builder-label count-label">数</div><div class="builder-row number-row" id="count-choices"></div></div><button type="button" class="primary-button submit-button" id="submit-signature" disabled>答え合わせ <span aria-hidden="true">↗</span></button></div>
+            <div class="feedback" id="feedback" role="status" aria-live="polite" hidden></div>
+            <button type="button" id="next-button" class="primary-button next-button" hidden>次の問題へ <span aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+      </section>
+      <p class="footnote">長調と短調には、同じ調号を使う組み合わせがあります。「両方」では問題ごとにどちらを答えるか表示します。</p>
+    </main>
+  </div>
+</body>
+</html>
