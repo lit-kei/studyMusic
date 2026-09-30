@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e0f2fe">
+  <meta name="description" content="再生された音をピアノ鍵盤で答える音当てクイズ。幹音と派生音を選んで練習できます。">
+  <title>音当てクイズ | 音楽対策</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%235582e2'/%3E%3Cpath d='M20 14v35c0 7-12 7-12 0s12-8 12-3V20l30-6v28c0 7-12 7-12 0s12-8 12-3V9z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <h1 class="title">音楽対策（音当て）</h1>
+
+    <section class="card settings" aria-labelledby="settings-title">
+      <h2 id="settings-title">出題設定</h2>
+      <p class="setting-help">出題したい音の種類を選んでください。</p>
+      <div class="check-grid">
+        <label class="check-card">
+          <input type="checkbox" id="natural-notes" checked>
+          <span class="check-icon" aria-hidden="true"></span>
+          <span><strong>幹音</strong><small>ド・レ・ミ・ファ・ソ・ラ・シ</small></span>
+        </label>
+        <label class="check-card">
+          <input type="checkbox" id="accidental-notes" checked>
+          <span class="check-icon" aria-hidden="true"></span>
+          <span><strong>派生音</strong><small>♯・♭が付く黒鍵の音</small></span>
+        </label>
+      </div>
+      <p class="setting-error" id="setting-error" role="alert" hidden>幹音または派生音を1つ以上選んでください。</p>
+    </section>
+
+    <section class="card quiz-card" aria-labelledby="question-title">
+      <div class="card-heading">
+        <h2 id="question-title">問題</h2>
+        <span id="question-number">QUESTION 01</span>
+      </div>
+      <div class="sound-stage">
+        <div class="sound-mark" aria-hidden="true">
+          <span class="sound-wave wave-one"></span>
+          <span class="sound-wave wave-two"></span>
+          <span class="note-mark">♪</span>
+        </div>
+        <p class="sound-title">流れた音はどの音？</p>
+        <p class="sound-caption" id="sound-caption">まず音を再生してください。</p>
+        <button type="button" class="listen-button" id="play-button">
+          <span class="play-icon" aria-hidden="true">▶</span>
+          <span id="play-label">音を再生</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="card answer-card" aria-labelledby="answer-title">
+      <div class="card-heading">
+        <h2 id="answer-title">解答</h2>
+        <span>鍵盤をタップ</span>
+      </div>
+      <p class="answer-help">正解だと思う鍵盤を押してください。鍵盤を押すと、その音も確認できます。</p>
+      <div class="piano-scroll">
+        <div class="piano" id="piano" role="group" aria-label="回答用ピアノ鍵盤"></div>
+      </div>
+      <div class="feedback" id="feedback" role="status" aria-live="polite" hidden></div>
+      <button type="button" class="next-button" id="next-button" hidden>次の問題へ</button>
+    </section>
+
+    <div class="score" aria-label="成績">
+      <span>正解 <strong id="correct-count">0</strong> 問</span>
+      <span>連続正解 <strong id="streak-count">0</strong> 問</span>
+    </div>
+    <p class="footnote">音が聞こえにくい場合は、端末の音量と消音設定を確認してください。</p>
+  </main>
+</body>
+</html>
