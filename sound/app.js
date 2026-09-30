@@ -113,8 +113,8 @@ function startQuestion(autoPlay){
 }
 
 function answer(note,key){
-  if(state.answered)return;
   playTone(note,.75);
+  if(state.answered)return;
   if(!state.hasPlayed){
     $('#sound-caption').textContent='問題の音を再生してから答えてください。';
     return;
@@ -125,7 +125,6 @@ function answer(note,key){
   $('#correct-count').textContent=state.correct;
   $('#streak-count').textContent=state.streak;
   document.querySelectorAll('.key').forEach(button=>{
-    button.disabled=true;
     if(Number(button.dataset.pitch)===state.current.pitch)button.classList.add('correct');
   });
   if(!isCorrect)key.classList.add('incorrect');
